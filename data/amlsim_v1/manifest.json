@@ -1,0 +1,734 @@
+{
+  "created": "2026-02-18T18:04:53.396444",
+  "splits": {
+    "train": {
+      "accountMapping.csv": {
+        "rows": 289375,
+        "size_bytes": 15003624,
+        "columns": [
+          "cust_acct_mapping_id",
+          "acct_id",
+          "cust_id",
+          "cust_acct_role",
+          "src_sys",
+          "data_dump_dt"
+        ],
+        "md5_head": "8e8eff3546f7f4d014d5b8837e6f10d1"
+      },
+      "accounts.csv": {
+        "rows": 289375,
+        "size_bytes": 48778287,
+        "columns": [
+          "acct_id",
+          "dsply_nm",
+          "type",
+          "acct_stat",
+          "acct_rptng_crncy",
+          "prior_sar_count",
+          "branch_id",
+          "open_dt",
+          "close_dt",
+          "initial_deposit",
+          "tx_behavior_id",
+          "bank_id",
+          "first_name",
+          "last_name",
+          "street_addr",
+          "city",
+          "state",
+          "country",
+          "zip",
+          "gender",
+          "birth_date",
+          "ssn",
+          "lon",
+          "lat"
+        ],
+        "md5_head": "1ca03bdeb3aec56728d31a5be1aad1e3"
+      },
+      "alert_accounts.csv": {
+        "rows": 20275,
+        "size_bytes": 1002961,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "acct_id",
+          "acct_name",
+          "is_sar",
+          "model_id",
+          "start",
+          "end",
+          "schedule_id",
+          "bank_id"
+        ],
+        "md5_head": "46c0b60e46cee8efffafdd1ff0fa336a"
+      },
+      "alert_transactions.csv": {
+        "rows": 7583,
+        "size_bytes": 556292,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "is_sar",
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp"
+        ],
+        "md5_head": "6891917b2089593807bc8f7c26aceaed"
+      },
+      "cash_tx.csv": {
+        "rows": 0,
+        "size_bytes": 77,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "9e7bf2ea4749c4572385ede5d7f47024"
+      },
+      "individuals-bulkload.csv": {
+        "rows": 144447,
+        "size_bytes": 7889466,
+        "columns": [
+          "birthPlaceCountry",
+          "countryofResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "348273e6fd662c814842c7b54bf195ca"
+      },
+      "organizations-bulkload.csv": {
+        "rows": 144928,
+        "size_bytes": 9220142,
+        "columns": [
+          "birthPlaceCountry",
+          "countryOfIncorporation",
+          "countryOfResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "a0b0d3b049dd759a098852fb085d0c44"
+      },
+      "resolvedentities.csv": {
+        "rows": 0,
+        "size_bytes": 98,
+        "columns": [
+          "entityrefid",
+          "entityreference",
+          "partyid1",
+          "partyid2",
+          "partyid1entitytype",
+          "partyid2entitytype",
+          "score",
+          "reason"
+        ],
+        "md5_head": "bd796f0e6d9a11ef8cc4f48d9a121e3e"
+      },
+      "sar_accounts.csv": {
+        "rows": 10932,
+        "size_bytes": 557252,
+        "columns": [
+          "ALERT_ID",
+          "ACCOUNT_ID",
+          "CUSTOMER_ID",
+          "EVENT_DATE",
+          "ALERT_TYPE",
+          "ACCOUNT_TYPE",
+          "IS_SAR"
+        ],
+        "md5_head": "f29443ee04f8d4af897458cd830c0c87"
+      },
+      "transactions.csv": {
+        "rows": 871670,
+        "size_bytes": 54312806,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "ef2a2e99a3719d32d1f021692b67c12a"
+      },
+      "tx_count.csv": {
+        "rows": 4000,
+        "size_bytes": 42820,
+        "columns": [
+          "step",
+          "normal",
+          "SAR"
+        ],
+        "md5_head": "b5b65f060ac53cfd8be181128d43e0eb"
+      },
+      "tx_log.csv": {
+        "rows": 871671,
+        "size_bytes": 53908049,
+        "columns": [
+          "step",
+          "type",
+          "amount",
+          "nameOrig",
+          "oldbalanceOrig",
+          "newbalanceOrig",
+          "nameDest",
+          "oldbalanceDest",
+          "newbalanceDest",
+          "isSAR",
+          "alertID"
+        ],
+        "md5_head": "a7ad47d962a73e8b78eff25798d1a31f"
+      }
+    },
+    "val": {
+      "accountMapping.csv": {
+        "rows": 289375,
+        "size_bytes": 15003624,
+        "columns": [
+          "cust_acct_mapping_id",
+          "acct_id",
+          "cust_id",
+          "cust_acct_role",
+          "src_sys",
+          "data_dump_dt"
+        ],
+        "md5_head": "8e8eff3546f7f4d014d5b8837e6f10d1"
+      },
+      "accounts.csv": {
+        "rows": 289375,
+        "size_bytes": 48777149,
+        "columns": [
+          "acct_id",
+          "dsply_nm",
+          "type",
+          "acct_stat",
+          "acct_rptng_crncy",
+          "prior_sar_count",
+          "branch_id",
+          "open_dt",
+          "close_dt",
+          "initial_deposit",
+          "tx_behavior_id",
+          "bank_id",
+          "first_name",
+          "last_name",
+          "street_addr",
+          "city",
+          "state",
+          "country",
+          "zip",
+          "gender",
+          "birth_date",
+          "ssn",
+          "lon",
+          "lat"
+        ],
+        "md5_head": "fcd64c7f5e67cb1654bccc4e539a817f"
+      },
+      "alert_accounts.csv": {
+        "rows": 20239,
+        "size_bytes": 1001336,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "acct_id",
+          "acct_name",
+          "is_sar",
+          "model_id",
+          "start",
+          "end",
+          "schedule_id",
+          "bank_id"
+        ],
+        "md5_head": "01efb6ee3af517018346e8bd877d96d1"
+      },
+      "alert_transactions.csv": {
+        "rows": 7607,
+        "size_bytes": 557982,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "is_sar",
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp"
+        ],
+        "md5_head": "9ba2bc730ea388df903af58faf64a381"
+      },
+      "cash_tx.csv": {
+        "rows": 0,
+        "size_bytes": 77,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "9e7bf2ea4749c4572385ede5d7f47024"
+      },
+      "individuals-bulkload.csv": {
+        "rows": 145427,
+        "size_bytes": 7943254,
+        "columns": [
+          "birthPlaceCountry",
+          "countryofResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "ce1351a4d84b66844c72985bf117bc61"
+      },
+      "organizations-bulkload.csv": {
+        "rows": 143948,
+        "size_bytes": 9157534,
+        "columns": [
+          "birthPlaceCountry",
+          "countryOfIncorporation",
+          "countryOfResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "98ca58c9673f44cb2bf25e2c47c1c260"
+      },
+      "resolvedentities.csv": {
+        "rows": 0,
+        "size_bytes": 98,
+        "columns": [
+          "entityrefid",
+          "entityreference",
+          "partyid1",
+          "partyid2",
+          "partyid1entitytype",
+          "partyid2entitytype",
+          "score",
+          "reason"
+        ],
+        "md5_head": "bd796f0e6d9a11ef8cc4f48d9a121e3e"
+      },
+      "sar_accounts.csv": {
+        "rows": 10976,
+        "size_bytes": 559686,
+        "columns": [
+          "ALERT_ID",
+          "ACCOUNT_ID",
+          "CUSTOMER_ID",
+          "EVENT_DATE",
+          "ALERT_TYPE",
+          "ACCOUNT_TYPE",
+          "IS_SAR"
+        ],
+        "md5_head": "cb6be61c5aabd9d926c77eb45f44533b"
+      },
+      "transactions.csv": {
+        "rows": 320266,
+        "size_bytes": 20002984,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "5bd225cbe29b4a982efb13b97a4dc887"
+      },
+      "tx_count.csv": {
+        "rows": 1000,
+        "size_bytes": 10045,
+        "columns": [
+          "step",
+          "normal",
+          "SAR"
+        ],
+        "md5_head": "3e68f03c720467c8e397ce4ed84b685e"
+      },
+      "tx_log.csv": {
+        "rows": 320266,
+        "size_bytes": 19994695,
+        "columns": [
+          "step",
+          "type",
+          "amount",
+          "nameOrig",
+          "oldbalanceOrig",
+          "newbalanceOrig",
+          "nameDest",
+          "oldbalanceDest",
+          "newbalanceDest",
+          "isSAR",
+          "alertID"
+        ],
+        "md5_head": "9ac7d0b7f172da90dedd3995a8387dc0"
+      }
+    },
+    "test": {
+      "accountMapping.csv": {
+        "rows": 289375,
+        "size_bytes": 15003624,
+        "columns": [
+          "cust_acct_mapping_id",
+          "acct_id",
+          "cust_id",
+          "cust_acct_role",
+          "src_sys",
+          "data_dump_dt"
+        ],
+        "md5_head": "8e8eff3546f7f4d014d5b8837e6f10d1"
+      },
+      "accounts.csv": {
+        "rows": 289375,
+        "size_bytes": 48776767,
+        "columns": [
+          "acct_id",
+          "dsply_nm",
+          "type",
+          "acct_stat",
+          "acct_rptng_crncy",
+          "prior_sar_count",
+          "branch_id",
+          "open_dt",
+          "close_dt",
+          "initial_deposit",
+          "tx_behavior_id",
+          "bank_id",
+          "first_name",
+          "last_name",
+          "street_addr",
+          "city",
+          "state",
+          "country",
+          "zip",
+          "gender",
+          "birth_date",
+          "ssn",
+          "lon",
+          "lat"
+        ],
+        "md5_head": "84fe24af9243864cc91b8317ef48417a"
+      },
+      "alert_accounts.csv": {
+        "rows": 20358,
+        "size_bytes": 1007131,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "acct_id",
+          "acct_name",
+          "is_sar",
+          "model_id",
+          "start",
+          "end",
+          "schedule_id",
+          "bank_id"
+        ],
+        "md5_head": "685229db7cf0968236033696ff6ab2db"
+      },
+      "alert_transactions.csv": {
+        "rows": 7740,
+        "size_bytes": 567705,
+        "columns": [
+          "alert_id",
+          "alert_type",
+          "is_sar",
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp"
+        ],
+        "md5_head": "19e178732f5421d5d8cd56cbed03a035"
+      },
+      "cash_tx.csv": {
+        "rows": 0,
+        "size_bytes": 77,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "9e7bf2ea4749c4572385ede5d7f47024"
+      },
+      "individuals-bulkload.csv": {
+        "rows": 144722,
+        "size_bytes": 7904072,
+        "columns": [
+          "birthPlaceCountry",
+          "countryofResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "fbd1bebb55beacc5c81c45e6fb93a2f8"
+      },
+      "organizations-bulkload.csv": {
+        "rows": 144653,
+        "size_bytes": 9203061,
+        "columns": [
+          "birthPlaceCountry",
+          "countryOfIncorporation",
+          "countryOfResidency",
+          "deathTime",
+          "firstName",
+          "isActive",
+          "lastName",
+          "legalName",
+          "listedCompany",
+          "maritalStatus",
+          "middleName",
+          "name",
+          "nameAlias",
+          "nationality",
+          "occupation",
+          "organizationSymbol",
+          "partyId",
+          "partyType",
+          "sourceOfIncome",
+          "title",
+          "website",
+          "gender",
+          "homePhone",
+          "alternatePhone",
+          "cellPhone",
+          "primaryPhone",
+          "workPhone",
+          "alternateEmail",
+          "companyEmail",
+          "personalEmail",
+          "workEmail",
+          "isIndividual"
+        ],
+        "md5_head": "54d7cce2ac0ffaf20496920837a5470c"
+      },
+      "resolvedentities.csv": {
+        "rows": 0,
+        "size_bytes": 98,
+        "columns": [
+          "entityrefid",
+          "entityreference",
+          "partyid1",
+          "partyid2",
+          "partyid1entitytype",
+          "partyid2entitytype",
+          "score",
+          "reason"
+        ],
+        "md5_head": "bd796f0e6d9a11ef8cc4f48d9a121e3e"
+      },
+      "sar_accounts.csv": {
+        "rows": 11147,
+        "size_bytes": 568499,
+        "columns": [
+          "ALERT_ID",
+          "ACCOUNT_ID",
+          "CUSTOMER_ID",
+          "EVENT_DATE",
+          "ALERT_TYPE",
+          "ACCOUNT_TYPE",
+          "IS_SAR"
+        ],
+        "md5_head": "fe4b66cbb61013701071467004f01250"
+      },
+      "transactions.csv": {
+        "rows": 320732,
+        "size_bytes": 20031996,
+        "columns": [
+          "tran_id",
+          "orig_acct",
+          "bene_acct",
+          "tx_type",
+          "base_amt",
+          "tran_timestamp",
+          "is_sar",
+          "alert_id"
+        ],
+        "md5_head": "041237495ca5064a4cdf11d71a64f54f"
+      },
+      "tx_count.csv": {
+        "rows": 1000,
+        "size_bytes": 10015,
+        "columns": [
+          "step",
+          "normal",
+          "SAR"
+        ],
+        "md5_head": "88cbb2dd1ff2557da5927ec76cbfe022"
+      },
+      "tx_log.csv": {
+        "rows": 320732,
+        "size_bytes": 20028083,
+        "columns": [
+          "step",
+          "type",
+          "amount",
+          "nameOrig",
+          "oldbalanceOrig",
+          "newbalanceOrig",
+          "nameDest",
+          "oldbalanceDest",
+          "newbalanceDest",
+          "isSAR",
+          "alertID"
+        ],
+        "md5_head": "e8542bd8bf8bf054466e5aa607d1dfac"
+      }
+    }
+  }
+}
