@@ -1,0 +1,21 @@
+{
+  "split": "test",
+  "num_accounts": 289375,
+  "num_devices": 50325,
+  "num_wallets": 40153,
+  "num_vpas": 278528,
+  "num_atms": 2000,
+  "num_banks": 1,
+  "num_sar_accounts": 11147,
+  "edges": {
+    "transfer": 320732,
+    "logged_in": 607794,
+    "linked_wallet": 289375,
+    "has_vpa": 289375,
+    "withdrew_atm": 61769,
+    "belongs_to_bank": 289375,
+    "shared_device": 1806672,
+    "same_wallet": 2570962
+  },
+  "total_edges": 6236054
+}
