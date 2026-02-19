@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary / intermediate files
+tmp/
+*.tmp
+*.log
+
+# Claude Code settings (local only)
+.claude/
+
+# Temporary helper scripts (not part of project)
+nb_cells.txt
+read_nb.py
+patch_nb.py
