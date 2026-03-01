@@ -1,312 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GhostBusters — AML Mule Detection Dashboard</title>
-    <meta name="description" content="Cross-Channel Mule Account Detection using GNN Real-Time Scoring">
+    <meta name="description" content="GhostBusters — AI-Powered Anti-Money Laundering Investigation Platform">
+    <title>GhostBusters AML Platform</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
 </head>
+
 <body>
 
-<!-- Mobile menu toggle -->
-<button class="mobile-menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+    <!-- ═══════════════════════════════════════════════════════════
+     LANDING PAGE
+     ═══════════════════════════════════════════════════════════ -->
+    <div id="page-landing" class="landing-page">
+        <canvas class="particle-canvas" id="particle-canvas"></canvas>
+        <div class="landing-content">
+            <div class="landing-badge">
+                <span class="pulse"></span>
+                AI-Powered Investigation Platform
+            </div>
 
-<div class="app-container">
-    <!-- ═══════════════════ SIDEBAR ═══════════════════ -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">
-                <div class="logo-icon">👻</div>
-                <div>
-                    <h1>GhostBusters</h1>
-                    <p>AML Detection Suite</p>
+            <h1 class="landing-title">
+                <span class="ghost-emoji">👻</span>
+                <span class="gradient-text">GhostBusters</span>
+                <br>AML Platform
+            </h1>
+
+            <p class="landing-subtitle">
+                Cross-channel mule account detection powered by Graph Neural Networks
+                and agentic AI. Analyze 289K+ accounts across 6.2M+ transaction edges in real time.
+            </p>
+
+            <div class="landing-stats">
+                <div class="landing-stat">
+                    <span class="stat-number" data-target="289375">0</span>
+                    <span class="stat-label">Accounts Monitored</span>
+                </div>
+                <div class="landing-stat">
+                    <span class="stat-number" data-target="9">0</span>
+                    <span class="stat-label">AI Models</span>
+                </div>
+                <div class="landing-stat">
+                    <span class="stat-number" data-target="100" data-suffix="%">0</span>
+                    <span class="stat-label">PR-AUC</span>
+                </div>
+                <div class="landing-stat">
+                    <span class="stat-number" data-target="20">0</span>
+                    <span class="stat-label">Active Alerts</span>
+                </div>
+            </div>
+
+            <button class="landing-cta" onclick="enterDashboard()">
+                Enter Dashboard
+                <span class="arrow">→</span>
+            </button>
+
+            <div class="landing-features">
+                <div class="landing-feature-card">
+                    <span class="feature-icon">🤖</span>
+                    <h3>Agentic AI Investigator</h3>
+                    <p>Autonomous investigation agent powered by local LLM. Reasons through evidence and drafts
+                        regulatory reports.</p>
+                </div>
+                <div class="landing-feature-card">
+                    <span class="feature-icon">🕸️</span>
+                    <h3>Graph Forensics</h3>
+                    <p>Trace money flows, detect mule rings, and visualize criminal networks with interactive D3.js
+                        force graphs.</p>
+                </div>
+                <div class="landing-feature-card">
+                    <span class="feature-icon">⚡</span>
+                    <h3>Real-Time Monitoring</h3>
+                    <p>Stream transactions in real-time with server-sent events. Instant risk scoring and anomaly
+                        detection.</p>
                 </div>
             </div>
         </div>
-        <nav class="sidebar-nav">
-            <div class="nav-item active" data-page="dashboard" onclick="navigateTo('dashboard')">
-                <span class="nav-icon">📊</span>
-                <span>Command Center</span>
-            </div>
-            <div class="nav-item" data-page="alerts" onclick="navigateTo('alerts')">
-                <span class="nav-icon">🚨</span>
-                <span>Alert Queue</span>
-                <span class="nav-badge" id="alert-count">0</span>
-            </div>
-            <div class="nav-item" data-page="investigate" onclick="navigateTo('investigate')">
-                <span class="nav-icon">🔍</span>
-                <span>Investigation</span>
-            </div>
-            <div class="nav-item" data-page="models" onclick="navigateTo('models')">
-                <span class="nav-icon">🧠</span>
-                <span>Model Analytics</span>
-            </div>
-            <div class="nav-item" data-page="streaming" onclick="navigateTo('streaming')">
-                <span class="nav-icon">⚡</span>
-                <span>Streaming Demo</span>
-            </div>
-        </nav>
-        <div class="sidebar-footer">
-            <span class="status-dot"></span> System Online<br>
-            <span style="margin-left: 14px; opacity: 0.6">v2.0 — GNN Scoring Engine</span>
-        </div>
-    </aside>
+    </div>
 
-    <!-- ═══════════════════ MAIN ═══════════════════ -->
-    <main class="main-content">
 
-        <!-- ─── PAGE: Command Center ─── -->
-        <div class="page active" id="page-dashboard">
-            <div class="page-header">
-                <h2>Command Center</h2>
-                <p>Real-time overview of the AML detection pipeline</p>
-            </div>
+    <!-- ═══════════════════════════════════════════════════════════
+     MAIN DASHBOARD (hidden until "Enter Dashboard")
+     ═══════════════════════════════════════════════════════════ -->
+    <div id="app-shell" class="app-container" style="display:none;">
 
-            <div class="kpi-grid" id="kpi-grid">
-                <div class="kpi-card cyan">
-                    <div class="kpi-icon">🏦</div>
-                    <div class="kpi-value" id="kpi-accounts">—</div>
-                    <div class="kpi-label">Total Accounts</div>
-                </div>
-                <div class="kpi-card red">
-                    <div class="kpi-icon">⚠️</div>
-                    <div class="kpi-value" id="kpi-sar">—</div>
-                    <div class="kpi-label">SAR Accounts</div>
-                </div>
-                <div class="kpi-card amber">
-                    <div class="kpi-icon">🚩</div>
-                    <div class="kpi-value" id="kpi-flagged">—</div>
-                    <div class="kpi-label">Flagged for Review</div>
-                </div>
-                <div class="kpi-card green">
-                    <div class="kpi-icon">🏆</div>
-                    <div class="kpi-value" id="kpi-best-prauc">—</div>
-                    <div class="kpi-label">Best PR-AUC (<span id="kpi-best-model">—</span>)</div>
-                </div>
-                <div class="kpi-card purple">
-                    <div class="kpi-icon">🔗</div>
-                    <div class="kpi-value" id="kpi-edges">—</div>
-                    <div class="kpi-label">Entity Graph Edges</div>
-                </div>
-            </div>
-
-            <div class="grid-2-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📡 Channel Activity (Edge Types)</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chart-channels"></canvas>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🎯 Risk Distribution</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chart-risk"></canvas>
+        <!-- ── Sidebar ────────────────────────────────────────── -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-icon">👻</div>
+                    <div>
+                        <h1>GhostBusters</h1>
+                        <p>AML Platform</p>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3>📡 Live Transaction Feed</h3>
-                    <button class="btn btn-outline" id="btn-toggle-feed" onclick="toggleFeed()">▶ Start Feed</button>
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    Command Center
                 </div>
-                <div class="live-feed" id="live-feed">
-                    <div class="empty-state">
-                        <div class="empty-icon">📡</div>
-                        <p>Click "Start Feed" to begin streaming transactions</p>
-                    </div>
+                <div class="nav-item" data-page="alerts">
+                    <span class="nav-icon">🚨</span>
+                    Alert Queue
+                    <span class="nav-badge" id="alert-badge">0</span>
                 </div>
+                <div class="nav-item" data-page="investigate">
+                    <span class="nav-icon">🔍</span>
+                    Investigation
+                </div>
+                <div class="nav-item" data-page="models">
+                    <span class="nav-icon">🧠</span>
+                    Model Analytics
+                </div>
+                <div class="nav-item" data-page="streaming">
+                    <span class="nav-icon">⚡</span>
+                    Streaming Demo
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Ollama qwen2.5 · Active
             </div>
-        </div>
+        </aside>
 
-        <!-- ─── PAGE: Alert Queue ─── -->
-        <div class="page" id="page-alerts">
-            <div class="page-header">
-                <h2>Alert Queue</h2>
-                <p>Flagged accounts requiring investigation</p>
-            </div>
+        <!-- ── Main Content ───────────────────────────────────── -->
+        <main class="main-content">
 
-            <div class="search-bar">
-                <input type="text" class="search-input" id="alert-search" placeholder="Search by Account ID or reason code..." oninput="filterAlerts()">
-                <select class="filter-select" id="alert-filter" onchange="filterAlerts()">
-                    <option value="all">All Risk Levels</option>
-                    <option value="HIGH">High Risk</option>
-                    <option value="MEDIUM">Medium Risk</option>
-                    <option value="LOW">Low Risk</option>
-                </select>
-            </div>
-
-            <div class="card" style="padding: 0; overflow: hidden;">
-                <div style="overflow-x: auto;">
-                    <table class="data-table" id="alerts-table">
-                        <thead>
-                            <tr>
-                                <th>Account ID</th>
-                                <th>Status</th>
-                                <th>Risk Level</th>
-                                <th>Reason Codes</th>
-                                <th>Sent / Received</th>
-                                <th>Fan-in Ratio</th>
-                                <th>Channels</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="alerts-tbody">
-                        </tbody>
-                    </table>
+            <!-- Page 1: Command Center -->
+            <section id="page-dashboard" class="page" style="display:none;">
+                <div class="page-header">
+                    <h2>Command Center</h2>
+                    <p>Real-time overview of the Cross-Channel Mule Detection System</p>
                 </div>
-            </div>
-        </div>
-
-        <!-- ─── PAGE: Investigation ─── -->
-        <div class="page" id="page-investigate">
-            <a class="back-btn" onclick="navigateTo('alerts')">← Back to Alert Queue</a>
-
-            <div id="investigate-content">
-                <div class="empty-state">
-                    <div class="empty-icon">🔍</div>
-                    <p>Select an account from the Alert Queue to investigate</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- ─── PAGE: Model Analytics ─── -->
-        <div class="page" id="page-models">
-            <div class="page-header">
-                <h2>Model Analytics</h2>
-                <p>Performance comparison across 9 models (4 Baselines + 5 GNNs)</p>
-            </div>
-
-            <div class="card" style="margin-bottom: 28px;">
-                <div class="card-header">
-                    <h3>📊 PR-AUC Comparison</h3>
-                </div>
-                <div id="prauc-bars"></div>
-            </div>
-
-            <div class="grid-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📈 Training Curves — PR-AUC</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chart-train-prauc"></canvas>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📉 Training Curves — Loss</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chart-train-loss"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card" style="margin-bottom: 28px;">
-                <div class="card-header">
-                    <h3>📋 Full Metrics Table</h3>
-                </div>
-                <div style="overflow-x: auto;">
-                    <table class="data-table" id="model-metrics-table">
-                        <thead>
-                            <tr>
-                                <th>Model</th>
-                                <th>Type</th>
-                                <th>PR-AUC</th>
-                                <th>ROC-AUC</th>
-                                <th>F1 (SAR)</th>
-                                <th>Precision</th>
-                                <th>Recall</th>
-                                <th>Recall@1×</th>
-                                <th>Accuracy</th>
-                            </tr>
-                        </thead>
-                        <tbody id="model-metrics-tbody"></tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3>🔧 Training Configuration</h3>
-                </div>
-                <div class="feature-grid" id="training-config-grid"></div>
-            </div>
-        </div>
-
-        <!-- ─── PAGE: Streaming Demo ─── -->
-        <div class="page" id="page-streaming">
-            <div class="page-header">
-                <h2>Streaming Transaction Scoring</h2>
-                <p>Real-time GNN-based suspicious activity detection</p>
-            </div>
-
-            <div class="stream-stats">
-                <div class="stream-stat">
-                    <div class="stat-value" id="stream-total">0</div>
-                    <div class="stat-label">Transactions Processed</div>
-                </div>
-                <div class="stream-stat">
-                    <div class="stat-value" id="stream-flagged" style="color: var(--accent-red)">0</div>
-                    <div class="stat-label">Flagged</div>
-                </div>
-                <div class="stream-stat">
-                    <div class="stat-value" id="stream-avg-score">0.00</div>
-                    <div class="stat-label">Avg Risk Score</div>
-                </div>
-                <div class="stream-stat">
-                    <div class="stat-value" id="stream-rate" style="color: var(--accent-green)">0</div>
-                    <div class="stat-label">TXN / sec</div>
-                </div>
-            </div>
-
-            <div class="grid-2-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>📊 Risk Score Distribution (Live)</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="chart-stream-hist"></canvas>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🎯 Latest Scored Transaction</h3>
-                    </div>
-                    <div id="latest-txn" style="text-align:center; padding: 20px;">
-                        <div class="score-gauge" id="score-gauge">
-                            <div class="gauge-value">—</div>
+                <div class="kpi-grid" id="kpi-grid"></div>
+                <div class="grid-2-1">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📈 Channel Activity</h3>
                         </div>
-                        <div id="latest-txn-details" style="margin-top: 16px; font-size: 0.82rem; color: var(--text-secondary);"></div>
+                        <div class="chart-container"><canvas id="chart-channels"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>🎯 Risk Distribution</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="chart-risk"></canvas></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3>📡 Transaction Stream</h3>
-                    <button class="btn btn-primary" id="btn-stream" onclick="toggleStreaming()">▶ Start Streaming</button>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🔴 Live Transaction Feed</h3>
+                        <span class="badge badge-info" id="feed-status">Connecting...</span>
+                    </div>
+                    <div class="live-feed" id="live-feed"></div>
                 </div>
-                <div class="live-feed" id="stream-feed" style="max-height: 320px;">
-                    <div class="empty-state">
-                        <div class="empty-icon">⚡</div>
-                        <p>Click "Start Streaming" to begin real-time scoring</p>
+            </section>
+
+            <!-- Page 2: Alert Queue -->
+            <section id="page-alerts" class="page" style="display:none;">
+                <div class="page-header">
+                    <h2>Alert Queue</h2>
+                    <p>Flagged accounts requiring investigation</p>
+                </div>
+                <div class="search-bar">
+                    <input class="search-input" type="text" id="alert-search"
+                        placeholder="Search account ID or risk level...">
+                    <select class="filter-select" id="alert-filter">
+                        <option value="all">All Risk Levels</option>
+                        <option value="HIGH">High</option>
+                        <option value="MEDIUM">Medium</option>
+                        <option value="LOW">Low</option>
+                    </select>
+                </div>
+                <div class="card" style="padding:0; overflow:hidden;">
+                    <div style="overflow-x:auto;">
+                        <table class="data-table" id="alert-table">
+                            <thead>
+                                <tr>
+                                    <th>Account ID</th>
+                                    <th>Risk</th>
+                                    <th>SAR Status</th>
+                                    <th>Top Reason</th>
+                                    <th>Confidence</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alert-tbody"></tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-    </main>
-</div>
+            <!-- Page 3: Investigation (dynamic) -->
+            <section id="page-investigate" class="page" style="display:none;"></section>
 
-<script src="/static/js/app.js"></script>
+            <!-- Page 4: Model Analytics -->
+            <section id="page-models" class="page" style="display:none;">
+                <div class="page-header">
+                    <h2>Model Analytics</h2>
+                    <p>Comparative performance of 9 trained models (5 GNNs + 4 baselines)</p>
+                </div>
+                <div class="card" style="margin-bottom:28px;">
+                    <div class="card-header">
+                        <h3>🏆 PR-AUC Performance</h3>
+                    </div>
+                    <div class="prauc-list" id="prauc-bars"></div>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📈 Training: PR-AUC</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="chart-prauc-history"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📉 Training: Loss</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="chart-loss-history"></canvas></div>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📋 Detailed Metrics</h3>
+                        </div>
+                        <div style="overflow-x:auto;">
+                            <table class="data-table" id="metrics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Type</th>
+                                        <th>PR-AUC</th>
+                                        <th>ROC-AUC</th>
+                                        <th>F1 (SAR)</th>
+                                        <th>Recall</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="metrics-tbody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>⚙️ Training Config</h3>
+                        </div>
+                        <div id="config-display"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Page 5: Streaming Demo -->
+            <section id="page-streaming" class="page" style="display:none;">
+                <div class="page-header">
+                    <h2>Streaming Demo</h2>
+                    <p>Real-time transaction risk scoring via Server-Sent Events</p>
+                </div>
+                <div class="stream-stats" id="stream-stats">
+                    <div class="stream-stat">
+                        <div class="stat-value" id="st-total">0</div>
+                        <div class="stat-label">Processed</div>
+                    </div>
+                    <div class="stream-stat">
+                        <div class="stat-value" id="st-flagged">0</div>
+                        <div class="stat-label">Flagged</div>
+                    </div>
+                    <div class="stream-stat">
+                        <div class="stat-value" id="st-avg">0.00</div>
+                        <div class="stat-label">Avg Score</div>
+                    </div>
+                    <div class="stream-stat">
+                        <div class="stat-value" id="st-speed">0</div>
+                        <div class="stat-label">txn/s</div>
+                    </div>
+                </div>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📊 Risk Score Distribution</h3>
+                        </div>
+                        <div class="chart-container"><canvas id="chart-stream-hist"></canvas></div>
+                    </div>
+                    <div class="card"
+                        style="display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                        <div class="card-header" style="width:100;">
+                            <h3>🎯 Latest Score</h3>
+                        </div>
+                        <div class="score-gauge" id="stream-gauge">
+                            <div class="gauge-value" id="gauge-value">—</div>
+                        </div>
+                        <div style="margin-top:16px; text-align:center;">
+                            <button class="btn btn-primary" id="stream-toggle" onclick="toggleStream()">▶ Start
+                                Stream</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 20px;">
+                    <div class="card-header">
+                        <h3>📜 Transaction Log</h3>
+                        <span class="badge badge-info" id="stream-status">Idle</span>
+                    </div>
+                    <div class="live-feed" id="stream-feed" style="max-height:250px;"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
 </body>
+
 </html>
